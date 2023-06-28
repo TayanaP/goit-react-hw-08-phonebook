@@ -1,10 +1,16 @@
-import { useDispatch } from 'react-redux';
-import { setContactsFilter } from 'redux/filtersSlice';
-
-import { Label, Input } from 'components/ContactForm/ContactForm.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { setContactsFilter } from 'redux/contacts/filtersSlice';
+import { selectFilter } from 'redux/contacts/selectors';
+import { Label, Input } from 'components/ContactsForm/ContactsForm.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();
+  const filter = useSelector(selectFilter);
+
+  const handleChangeFilter = e => {
+    const normalizedValue = e.target.value.toLowerCase().trim();
+    dispatch(setContactsFilter(normalizedValue));
+  };
 
   return (
     <Label>
@@ -14,7 +20,7 @@ export const Filter = () => {
         name="filter"
         title="Enter name or surname"
         required
-        onChange={e => dispatch(setContactsFilter(e.target.value))}
+        onChange={handleChangeFilter}
       />
     </Label>
   );

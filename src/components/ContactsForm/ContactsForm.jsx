@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
-import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/contacts/operations';
+import { selectContacts } from 'redux/contacts/selectors';
+import { Notify } from 'notiflix';
 import {
   Form,
   Label,
   Input,
   Button,
-} from 'components/ContactForm/ContactForm.styled';
+} from 'components/ContactsForm/ContactsForm.styled';
 
 export const ContactForm = () => {
   const contacts = useSelector(selectContacts);
@@ -30,7 +32,16 @@ export const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact({ name, number, id: nanoid() }));
+    dispatch(addContact({ name, number, id: nanoid() }))
+      .unwrap()
+      .then(originalPromiseResult => {
+        Notify.success(
+          `${originalPromiseResult.name} successfully added to contacts`
+        );
+      })
+      .catch(() => {
+        Notify.failure("Sorry, something's wrong");
+      });
     form.reset();
   };
 
@@ -61,4 +72,8 @@ export const ContactForm = () => {
       <Button type="submit">Add contact</Button>
     </Form>
   );
+};
+
+ContactForm.propTypes = {
+  onCloseModal: PropTypes.func.isRequired,
 };
