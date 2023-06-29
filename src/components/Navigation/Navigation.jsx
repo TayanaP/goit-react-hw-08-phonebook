@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import { useAuth } from 'hooks/useAuth';
 import { Logo, Contacts } from 'components/Navigation/Navigation.styled';
 

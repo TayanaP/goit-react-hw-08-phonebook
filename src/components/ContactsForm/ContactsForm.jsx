@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
