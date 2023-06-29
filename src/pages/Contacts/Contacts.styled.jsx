@@ -1,9 +1,15 @@
 import styled from '@emotion/styled';
 
-export const Section = styled.div``;
+export const Container = styled.div`
+  padding: 38px 48px;
+  //   height: 100vh;
+  background-color: #e4eaef;
+`;
 
-export const Container = styled.div``;
+export const Title = styled.h2`
+  font-weight: 700;
+  font-size: 26px;
+  text-align: center;
 
-export const Title = styled.h1``;
-
-export const SubTitle = styled.h2``;
+  margin: 0;
+`;

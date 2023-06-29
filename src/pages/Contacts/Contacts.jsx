@@ -5,14 +5,9 @@ import { selectError, selectIsLoading } from 'redux/contacts/selectors';
 import { ContactForm } from 'components/ContactsForm/ContactsForm';
 import { Filter } from 'components/Filter/Filter';
 import { ContactsList } from 'components/ContactsList/ContactsList';
-import {
-  Section,
-  Container,
-  Title,
-  SubTitle,
-} from 'pages/Contacts/Contacts.styled';
+import { Container, Title } from 'pages/Contacts/Contacts.styled';
 
-export const Contacts = () => {
+const Contacts = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -22,15 +17,15 @@ export const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <Section>
-      <Container>
-        <Title>Phonebook</Title>
-        <ContactForm />
-        <SubTitle>Contacts</SubTitle>
-        <Filter />
-        {isLoading && !error && <b>Request in progress...</b>}
-        <ContactsList />
-      </Container>
-    </Section>
+    <Container>
+      {/* <Title>Phonebook</Title> */}
+      <ContactForm />
+      <Title>Contacts</Title>
+      <Filter />
+      {isLoading && !error && <b>Request in progress...</b>}
+      <ContactsList />
+    </Container>
   );
 };
+
+export default Contacts;

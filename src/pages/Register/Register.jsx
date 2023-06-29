@@ -1,5 +1,7 @@
 import { RegisterForm } from 'components/RegisterForm/RegisterForm';
 
-export default function Register() {
+const Register = () => {
   return <RegisterForm />;
-}
+};
+
+export default Register;

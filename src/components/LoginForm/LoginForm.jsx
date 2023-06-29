@@ -17,7 +17,7 @@ export const LoginForm = () => {
     const form = e.currentTarget;
     dispatch(
       logIn({
-        email: form.elements.email.value,
+        email: form.elements.name.value,
         password: form.elements.password.value,
       })
     )
@@ -49,7 +49,7 @@ export const LoginForm = () => {
         Password
         <Input
           type="text"
-          name="name"
+          name="password"
           // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required

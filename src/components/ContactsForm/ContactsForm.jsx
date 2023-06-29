@@ -73,7 +73,3 @@ export const ContactForm = () => {
     </Form>
   );
 };
-
-ContactForm.propTypes = {
-  onCloseModal: PropTypes.func.isRequired,
-};
